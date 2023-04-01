@@ -345,3 +345,12 @@
 	path = ports/raspberrypi/lib/Pico-PIO-USB
 	url = https://github.com/sekigon-gonnoc/Pico-PIO-USB.git
 	branch = main
+[submodule "frozen/Adafruit_CircuitPython_MiniMQTT"]
+	path = frozen/Adafruit_CircuitPython_MiniMQTT
+	url = https://github.com/adafruit/Adafruit_CircuitPython_MiniMQTT.git
+[submodule "frozen/Magtag_CO2"]
+	path = frozen/Magtag_CO2
+	url = https://github.com/rdlaner/Magtag_CO2.git
+[submodule "frozen/CircuitPython_HomeAssistant"]
+	path = frozen/CircuitPython_HomeAssistant
+	url = https://github.com/rdlaner/CircuitPython_HomeAssistant.git
