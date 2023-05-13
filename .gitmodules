@@ -354,3 +354,21 @@
 [submodule "frozen/CircuitPython_HomeAssistant"]
 	path = frozen/CircuitPython_HomeAssistant
 	url = https://github.com/rdlaner/CircuitPython_HomeAssistant.git
+[submodule "frozen/Adafruit_CircuitPython_Logging"]
+	path = frozen/Adafruit_CircuitPython_Logging
+	url = https://github.com/adafruit/Adafruit_CircuitPython_Logging
+[submodule "frozen/CircuitPython_Libs"]
+	path = frozen/CircuitPython_Libs
+	url = https://github.com/rdlaner/CircuitPython_Libs.git
+[submodule "frozen/Adafruit_CircuitPython_NTP"]
+	path = frozen/Adafruit_CircuitPython_NTP
+	url = https://github.com/adafruit/Adafruit_CircuitPython_NTP.git
+[submodule "frozen/ESPNow_Gateway"]
+	path = frozen/ESPNow_Gateway
+	url = https://github.com/rdlaner/ESPNow_Gateway.git
+[submodule "frozen/Adafruit_CircuitPython_SCD4X"]
+	path = frozen/Adafruit_CircuitPython_SCD4X
+	url = https://github.com/adafruit/Adafruit_CircuitPython_SCD4X.git
+[submodule "frozen/BPI_Leaf_CO2"]
+	path = frozen/BPI_Leaf_CO2
+	url = https://github.com/rdlaner/BPI_Leaf_CO2.git
