@@ -36,6 +36,7 @@
 #define CIRCUITPY_DIGITALIO_HAVE_INPUT_ONLY (1)
 
 #include "py/circuitpy_mpconfig.h"
+#include "esp_attr.h"
 
 #if CIRCUITPY_BLEIO
 #define BLEIO_ROOT_POINTERS struct ble_event_handler_entry *ble_event_handler_entries;
@@ -56,6 +57,40 @@
 
 #define MICROPY_NLR_SETJMP                  (1)
 #define CIRCUITPY_DEFAULT_STACK_SIZE        0x6000
+
+// Functions that should go in IRAM - taken from micropython port
+#ifdef MICROPY_WRAP_MP_BINARY_OP
+#undef MICROPY_WRAP_MP_BINARY_OP
+#define MICROPY_WRAP_MP_BINARY_OP(f) IRAM_ATTR f
+#endif
+#ifdef MICROPY_WRAP_MP_EXECUTE_BYTECODE
+#undef MICROPY_WRAP_MP_EXECUTE_BYTECODE
+#define MICROPY_WRAP_MP_EXECUTE_BYTECODE(f) IRAM_ATTR f
+#endif
+#ifdef MICROPY_WRAP_MP_LOAD_GLOBAL
+#undef MICROPY_WRAP_MP_LOAD_GLOBAL
+#define MICROPY_WRAP_MP_LOAD_GLOBAL(f) IRAM_ATTR f
+#endif
+#ifdef MICROPY_WRAP_MP_LOAD_NAME
+#undef MICROPY_WRAP_MP_LOAD_NAME
+#define MICROPY_WRAP_MP_LOAD_NAME(f) IRAM_ATTR f
+#endif
+#ifdef MICROPY_WRAP_MP_MAP_LOOKUP
+#undef MICROPY_WRAP_MP_MAP_LOOKUP
+#define MICROPY_WRAP_MP_MAP_LOOKUP(f) IRAM_ATTR f
+#endif
+#ifdef MICROPY_WRAP_MP_OBJ_GET_TYPE
+#undef MICROPY_WRAP_MP_OBJ_GET_TYPE
+#define MICROPY_WRAP_MP_OBJ_GET_TYPE(f) IRAM_ATTR f
+#endif
+#ifdef MICROPY_WRAP_MP_SCHED_EXCEPTION
+#undef MICROPY_WRAP_MP_SCHED_EXCEPTION
+#define MICROPY_WRAP_MP_SCHED_EXCEPTION(f) IRAM_ATTR f
+#endif
+#ifdef MICROPY_WRAP_MP_SCHED_KEYBOARD_INTERRUPT
+#undef MICROPY_WRAP_MP_SCHED_KEYBOARD_INTERRUPT
+#define MICROPY_WRAP_MP_SCHED_KEYBOARD_INTERRUPT(f) IRAM_ATTR f
+#endif
 
 // Nearly all boards have this because it is used to enter the ROM bootloader.
 #ifndef CIRCUITPY_BOOT_BUTTON
