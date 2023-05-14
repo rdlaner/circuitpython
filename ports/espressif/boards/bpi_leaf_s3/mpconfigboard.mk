@@ -9,9 +9,6 @@ CIRCUITPY_ESP_FLASH_MODE=dio
 CIRCUITPY_ESP_FLASH_FREQ=80m
 CIRCUITPY_ESP_FLASH_SIZE=8MB
 
-# Enable micropython.native
-CIRCUITPY_ENABLE_MPY_NATIVE = 1
-
 # Include these Python libraries in firmware.
 FROZEN_MPY_DIRS += $(TOP)/frozen/Adafruit_CircuitPython_NeoPixel
 FROZEN_MPY_DIRS += $(TOP)/frozen/Adafruit_CircuitPython_Logging
