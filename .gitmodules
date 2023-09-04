@@ -372,3 +372,6 @@
 [submodule "frozen/BPI_Leaf_CO2"]
 	path = frozen/BPI_Leaf_CO2
 	url = https://github.com/rdlaner/BPI_Leaf_CO2.git
+[submodule "frozen/CircuitPython_CO2"]
+	path = frozen/CircuitPython_CO2
+	url = https://github.com/rdlaner/CircuitPython_CO2.git
