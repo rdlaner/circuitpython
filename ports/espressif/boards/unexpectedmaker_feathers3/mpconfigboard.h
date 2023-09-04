@@ -46,3 +46,5 @@
 #define DEFAULT_UART_BUS_TX (&pin_GPIO43)
 
 #define DOUBLE_TAP_PIN (&pin_GPIO47)
+
+#define ENABLE_DISPLAY (1)
