@@ -1,0 +1,49 @@
+When importing micropython?:
+
+(gdb) p fun_in
+$1 = (mp_obj_t) 0x3c15c4e8 <supervisor_flash_obj_ioctl_obj>
+(gdb) p *type
+$2 = {base = {type = 0x3c13d8f4 <mp_type_type>}, flags = 224, name = 1076, locals_dict = 0x0, make_new = 0x0, print = 0x0, attr = 0x0, parent = 0x0, ext = 0x3c13b9a8 <mp_type_fun_builtin_3+28>}
+
+(gdb) p fun_in
+$3 = (mp_obj_t) 0x3c14285c <fat_vfs_open_obj>
+(gdb) p *type
+$4 = {base = {type = 0x3c13d8f4 <mp_type_type>}, flags = 224, name = 1076, locals_dict = 0x0, make_new = 0x0, print = 0x0, attr = 0x0, parent = 0x0, ext = 0x3c13b9a8 <mp_type_fun_builtin_3+28>}
+
+(gdb) p fun_in
+$5 = (mp_obj_t) 0x3c13d9f4 <mp_stream_close_obj>
+(gdb) p *type
+$6 = {base = {type = 0x3c13d8f4 <mp_type_type>}, flags = 224, name = 1076, locals_dict = 0x0, make_new = 0x0, print = 0x0, attr = 0x0, parent = 0x0, ext = 0x3c13ba20 <mp_type_fun_builtin_1+28>}
+
+
+When compiling native test function?
+
+(gdb) p fun_in
+$7 = (mp_obj_t) 0x3dfffea0
+(gdb) p *type
+$8 = {base = {type = 0x3c13d8f4 <mp_type_type>}, flags = 160, name = 1076, locals_dict = 0x0, make_new = 0x0, print = 0x42017874 <fun_bc_print>, attr = 0x0, parent = 0x0, ext = 0x3c13b930 <mp_type_fun_bc+28>}
+
+calls mp_obj_new_fun_native()
+
+
+When calling native test function?
+
+(gdb) p fun_in
+$9 = (mp_obj_t) 0x3d82f680
+(gdb) p *type
+$10 = {base = {type = 0x3c13d8f4 <mp_type_type>}, flags = 160, name = 1076, locals_dict = 0x0, make_new = 0x0, print = 0x0, attr = 0x0, parent = 0x0, ext = 0x3c13b8f4 <mp_type_fun_native+28>}
+
+blows up
+(gdb) bt
+#0  0x40374400 in _init ()
+#1  0x42017740 in fun_native_call (self_in=0x3d82f680, n_args=1, n_kw=0, args=0x3d800214) at ../../py/objfun.c:425
+#2  0x420129d1 in mp_call_function_n_kw (fun_in=0x3d82f680, n_args=1, n_kw=0, args=0x3d800214) at ../../py/runtime.c:661
+#3  0x40376ef0 in mp_execute_bytecode (code_state=<optimized out>, inject_exc=<optimized out>) at ../../py/vm.c:945
+#4  0x420177c9 in fun_bc_call (self_in=<optimized out>, n_args=0, n_kw=<optimized out>, args=0x0) at ../../py/objfun.c:297
+#5  0x420129d1 in mp_call_function_n_kw (fun_in=0x3dfffea0, n_args=0, n_kw=0, args=0x0) at ../../py/runtime.c:661
+#6  0x420129f9 in mp_call_function_0 (fun=0x3dfffea0) at ../../py/runtime.c:634
+#7  0x42058cda in parse_compile_execute (source=0x3c15c394, input_kind=MP_PARSE_FILE_INPUT, exec_flags=32, result=0x3fca63b4 <_exec_result>) at ../../shared/runtime/pyexec.c:134
+#8  0x42059065 in pyexec_file (filename=0x3c15c394 "code.py", result=0x3fca63b4 <_exec_result>) at ../../shared/runtime/pyexec.c:738
+#9  0x420239aa in maybe_run_list (filenames=<optimized out>, n_filenames=<optimized out>) at ../../main.c:269
+#10 0x42023dbb in run_code_py (safe_mode=SAFE_MODE_NONE, simulate_reset=0x3fcb77d0) at ../../main.c:455
+#11 0x4202421c in main () at ../../main.c:1099
