@@ -369,9 +369,6 @@
 [submodule "frozen/Adafruit_CircuitPython_SCD4X"]
 	path = frozen/Adafruit_CircuitPython_SCD4X
 	url = https://github.com/adafruit/Adafruit_CircuitPython_SCD4X.git
-[submodule "frozen/BPI_Leaf_CO2"]
-	path = frozen/BPI_Leaf_CO2
-	url = https://github.com/rdlaner/BPI_Leaf_CO2.git
 [submodule "frozen/CircuitPython_CO2"]
 	path = frozen/CircuitPython_CO2
 	url = https://github.com/rdlaner/CircuitPython_CO2.git
