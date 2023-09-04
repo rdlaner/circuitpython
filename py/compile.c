@@ -852,21 +852,26 @@ STATIC bool compile_built_in_decorator(compiler_t *comp, size_t name_len, mp_par
     qstr attr = MP_PARSE_NODE_LEAF_ARG(name_nodes[1]);
     if (attr == MP_QSTR_bytecode) {
         *emit_options = MP_EMIT_OPT_BYTECODE;
-        // @micropython.native decorator.
+    //     // @micropython.native decorator.
+    // } else if (attr == MP_QSTR_native) {
+    //     // Different from MicroPython: native doesn't raise SyntaxError if native support isn't
+    //     // compiled, it just passes through the function unmodified.
+    //     #if MICROPY_EMIT_NATIVE
+    //     *emit_options = MP_EMIT_OPT_NATIVE_PYTHON;
+    //     #else
+    //     return true;
+    //     #endif
+    //     #if MICROPY_EMIT_NATIVE
+    //     // @micropython.viper decorator.
+    // } else if (attr == MP_QSTR_viper) {
+    //     *emit_options = MP_EMIT_OPT_VIPER;
+    //     #endif
+    #if MICROPY_EMIT_NATIVE
     } else if (attr == MP_QSTR_native) {
-        // CIRCUITPY
-        // Different from MicroPython: native doesn't raise SyntaxError if native support isn't
-        // compiled, it just passes through the function unmodified.
-        #if MICROPY_EMIT_NATIVE
         *emit_options = MP_EMIT_OPT_NATIVE_PYTHON;
-        #else
-        return true;
-        #endif
-        #if MICROPY_EMIT_NATIVE
-        // @micropython.viper decorator.
     } else if (attr == MP_QSTR_viper) {
         *emit_options = MP_EMIT_OPT_VIPER;
-        #endif
+    #endif
         #if MICROPY_EMIT_INLINE_ASM
     #if MICROPY_DYNAMIC_COMPILER
     } else if (attr == MP_QSTR_asm_thumb) {

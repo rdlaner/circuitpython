@@ -51,9 +51,12 @@
 #include "py/objfun.h"
 #include "py/objstr.h"
 
+#include "esp_log.h"
+
 #if MICROPY_DEBUG_VERBOSE // print debugging info
 #define DEBUG_PRINT (1)
-#define DEBUG_printf DEBUG_printf
+#define DEBUG_printf(...) ESP_LOGI("emitglue", __VA_ARGS__)
+#define DEBUG_OP_printf(...) ESP_LOGI("emitglue", __VA_ARGS__)
 #else // don't print debugging info
 #define DEBUG_printf(...) (void)0
 #endif
